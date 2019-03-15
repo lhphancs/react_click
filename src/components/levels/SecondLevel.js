@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactTooltip from 'react-tooltip'
 import './SecondLevel.css';
-
+import store from '../../store/store'
 
 function SecondLevel(props){
     const AMT_BOX_TO_DRAW = 3;
     const amtInitialBoxesDrawn = getRndInteger(0, AMT_BOX_TO_DRAW-1);
 
-    function FakeButton(props){
+    function FakeButton(){
         return(
-            <button className="btn btn-outline-primary btn-to-click m-2" onClick={props.onHealthLoss}></button>
+            <button className="btn btn-outline-primary btn-to-click m-2" onClick={ () => store.dispatch({type: "DECREMENT_HEALTH"}) }></button>
         )
     }
 
@@ -29,9 +29,7 @@ function SecondLevel(props){
     }
     return (
         <div>
-            <div>
-                { boxToDrawArray.map( (btn) => btn) }
-            </div>
+            { boxToDrawArray.map( (btn) => btn) }
             <ReactTooltip />
         </div>
     );

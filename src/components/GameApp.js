@@ -3,14 +3,11 @@ import './GameApp.css';
 import PreLevel from './levels/PreLevel';
 import FirstLevel from './levels/FirstLevel';
 import SecondLevel from './levels/SecondLevel';
-import { store } from '../store/configureStore';
+import store from '../store/store'
 
 function GameApp(){
   const onLevelPassed = () => {
     setLevel(level+1);
-  }
-  const onHealthLoss = () =>{
-    setHealth(health-1);
   }
 
   const titles = [
@@ -21,14 +18,14 @@ function GameApp(){
   ]
 
   const dictLevel = {
-    0: <PreLevel onLevelPassed={onLevelPassed} onHealthLoss={onHealthLoss}/>,
-    1: <FirstLevel onLevelPassed={onLevelPassed} onHealthLoss={onHealthLoss}/>,
-    2: <SecondLevel onLevelPassed={onLevelPassed} onHealthLoss={onHealthLoss}/>
+    0: <PreLevel onLevelPassed={onLevelPassed} />,
+    1: <FirstLevel onLevelPassed={onLevelPassed} />,
+    2: <SecondLevel onLevelPassed={onLevelPassed} />
   }
 
-  const [health, setHealth] = useState(100000);
-  const [level, setLevel] = useState(1);
+  const [level, setLevel] = useState(2);
 
+  console.log(store.getState())
   return (
       <div className="container border border-secondary p-3 mt-5">
         <h1 className="text-center">{ titles[level] }</h1>
@@ -36,7 +33,7 @@ function GameApp(){
             { level < Object.keys(dictLevel).length ? dictLevel[level] : <div>You win?</div> }
         </div>
         <div>
-            <p className="border border-secondary p-3 mt-5">Health: {health}</p>
+            <p className="border border-secondary p-3 mt-5">Health: {store.getState().health}</p>
         </div>
       </div>
   );
