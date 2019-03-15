@@ -3,6 +3,7 @@ import './GameApp.css';
 import PreLevel from './levels/PreLevel';
 import FirstLevel from './levels/FirstLevel';
 import SecondLevel from './levels/SecondLevel';
+import HealthCounter from './HealthCounter';
 import store from '../store/store'
 
 function GameApp(){
@@ -32,9 +33,7 @@ function GameApp(){
         <div>
             { level < Object.keys(dictLevel).length ? dictLevel[level] : <div>You win?</div> }
         </div>
-        <div>
-            <p className="border border-secondary p-3 mt-5">Health: {store.getState().health}</p>
-        </div>
+        <HealthCounter />
       </div>
   );
 }

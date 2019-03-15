@@ -20,8 +20,8 @@ function FirstLevel(props){
     return(
         <div>
             <button className={boxStates[clickCounter].classSet} onClick={onBoxClick}
-            data-tip={boxStates[clickCounter].msg}
-            >
+            data-tip={boxStates[clickCounter].msg}>
+            
             </button>
             <ReactTooltip />
         </div>
