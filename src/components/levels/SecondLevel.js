@@ -3,36 +3,41 @@ import ReactTooltip from 'react-tooltip'
 import './SecondLevel.css';
 import store from '../../store/store'
 
+
 function SecondLevel(props){
     const AMT_BOX_TO_DRAW = 3;
     const amtInitialBoxesDrawn = getRndInteger(0, AMT_BOX_TO_DRAW-1);
 
-    function FakeButton(){
-        return(
-            <button className="btn btn-outline-primary btn-to-click m-2" onClick={ () => store.dispatch({type: "DECREMENT_HEALTH"}) }></button>
-        )
-    }
-
     const boxToDrawArray = [];
-    for(var i=0; i<amtInitialBoxesDrawn; ++i){
-        boxToDrawArray.push(<FakeButton onHealthLoss={props.onHealthLoss} />);
-    }
+
+    addFakeButtonsToArray(boxToDrawArray, "F-A", props.onHealthLoss, amtInitialBoxesDrawn);
     boxToDrawArray.push(
         <button className="btn btn-outline-primary btn-to-click m-2"
-        data-tip={"Acchoo"}
+        key="RealBtn" data-tip={"Acchoo"}
         onClick={props.onLevelPassed}>
         </button>
     )
-    var amtRemainingToDraw = AMT_BOX_TO_DRAW - amtInitialBoxesDrawn - 1;
-    for(var i=0; i<amtRemainingToDraw; ++i){
-        boxToDrawArray.push(<FakeButton onHealthLoss={props.onHealthLoss} />);
-    }
+    addFakeButtonsToArray(boxToDrawArray, "F-B", props.onHealthLoss, AMT_BOX_TO_DRAW - amtInitialBoxesDrawn - 1);
+
     return (
         <div>
             { boxToDrawArray.map( (btn) => btn) }
             <ReactTooltip />
         </div>
     );
+}
+
+function addFakeButtonsToArray(array, preKeyVal, onClickResponse, amtToAdd){
+    function FakeButton(){
+        return(
+            <button className="btn btn-outline-primary btn-to-click m-2"
+            onClick={ () => store.dispatch({type: "DECREMENT_HEALTH"}) }></button>
+        )
+    }
+
+    for(var i=0; i<amtToAdd; ++i){
+        array.push(<FakeButton key={preKeyVal+i} onHealthLoss={onClickResponse} />);
+    }
 }
 
 function getRndInteger(min, max) {

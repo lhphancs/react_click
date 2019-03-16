@@ -4,7 +4,6 @@ import PreLevel from './levels/PreLevel';
 import FirstLevel from './levels/FirstLevel';
 import SecondLevel from './levels/SecondLevel';
 import HealthCounter from './HealthCounter';
-import store from '../store/store'
 
 function GameApp(){
   const onLevelPassed = () => {
@@ -26,7 +25,6 @@ function GameApp(){
 
   const [level, setLevel] = useState(2);
 
-  console.log(store.getState())
   return (
       <div className="container border border-secondary p-3 mt-5">
         <h1 className="text-center">{ titles[level] }</h1>
