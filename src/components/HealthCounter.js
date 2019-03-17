@@ -1,15 +1,14 @@
 import React from 'react';
-import store from '../store/store'
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state) =>{
-    return state.health;
+    return { health: state.health };
 };
 
-function HealthCounter(){
+function HealthCounter(props){
     return(
         <div>
-            <p className="border border-secondary p-3 mt-5">Health: {store.getState().health.amt}</p>
+            <p className="border border-secondary p-3 mt-5">Health: {props.health.amt}</p>
         </div>
     )
 }
