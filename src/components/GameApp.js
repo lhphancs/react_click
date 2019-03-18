@@ -1,10 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import './GameApp.css';
 import ScreenLose from './ScreenLose';
 import store from '../store/store';
-
-import HealthCounter from './HealthCounter';
 
 import PreLevel from './levels/PreLevel';
 import FirstLevel from './levels/FirstLevel';
@@ -12,12 +9,18 @@ import SecondLevel from './levels/SecondLevel';
 import ThirdLevel from './levels/ThirdLevel';
 import Timer from './Timer';
 
+import HealthCounter from './HealthCounter';
+import './GameApp.css';
+
 const mapStateToProps = (state) =>{
-    return { level: state.level };
+    return {
+      level: state.level
+    };
 };
 
-
 function GameApp(props){
+  const TIMER_AMT = 10000;
+
   const titles = [
     "Level: 0",
     "Level: 1",
@@ -45,12 +48,14 @@ function GameApp(props){
         <div>
           {
             props.level.num === -1 ? <ScreenLose />
-            : props.level.num < Object.keys(dictLevel).length ? dictLevel[props.level.num]
+            : props.level.num < Object.keys(dictLevel).length ?
+              <div>
+                { dictLevel[props.level.num] }
+                <Timer secondsLeft={TIMER_AMT} />
+              </div>
             : <div>You win?</div>
           }
         </div>
-
-        <Timer secondsLeft={1} />
         <HealthCounter />
       </div>
   );

@@ -1,5 +1,5 @@
 const initialHealthState = {
-    amt: 10000
+    amt: 1
 }
 
 export default function health(state = initialHealthState, event){
