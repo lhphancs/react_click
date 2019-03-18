@@ -1,5 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 import './GameApp.css';
+import ScreenLose from './ScreenLose';
+import store from '../store/store';
+
 import HealthCounter from './HealthCounter';
 
 import PreLevel from './levels/PreLevel';
@@ -8,11 +12,12 @@ import SecondLevel from './levels/SecondLevel';
 import ThirdLevel from './levels/ThirdLevel';
 import Timer from './Timer';
 
-function GameApp(){
-  const onLevelPassed = () => {
-    setLevel(level+1);
-  }
+const mapStateToProps = (state) =>{
+    return { level: state.level };
+};
 
+
+function GameApp(props){
   const titles = [
     "Level: 0",
     "Level: 1",
@@ -21,6 +26,10 @@ function GameApp(){
     "End"
   ]
 
+  const onLevelPassed = () => {
+    store.dispatch({type: "INCREMENT_LEVEL"})
+  }
+
   const dictLevel = {
     0: <PreLevel onLevelPassed={onLevelPassed} />,
     1: <FirstLevel onLevelPassed={onLevelPassed} />,
@@ -28,19 +37,23 @@ function GameApp(){
     3: <ThirdLevel onLevelPassed={onLevelPassed} />,
   }
 
-  const [level, setLevel] = useState(3);
-
   return (
       <div className="container border border-secondary p-3 mt-5">
-        <h1 className="text-center">{ titles[level] }</h1>
+        <h1 className="text-center">{ titles[props.level.num] }</h1>
         <div>
-            { level < Object.keys(dictLevel).length ? dictLevel[level] : <div>You win?</div> }
+        </div>
+        <div>
+          {
+            props.level.num === -1 ? <ScreenLose />
+            : props.level.num < Object.keys(dictLevel).length ? dictLevel[props.level.num]
+            : <div>You win?</div>
+          }
         </div>
 
-        <Timer secondsLeft={200} />
+        <Timer secondsLeft={1} />
         <HealthCounter />
       </div>
   );
 }
 
-export default GameApp;
+export default connect(mapStateToProps)(GameApp);

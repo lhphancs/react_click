@@ -14,7 +14,7 @@ export default function level(state = initialLevelState, event){
             })
         case 'SET_LEVEL':
             return Object.assign({}, state, {
-               num: event.numHealth 
+               num: event.level
             })
         default:
             return state;
