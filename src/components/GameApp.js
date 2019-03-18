@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import './GameApp.css';
+import HealthCounter from './HealthCounter';
+
 import PreLevel from './levels/PreLevel';
 import FirstLevel from './levels/FirstLevel';
 import SecondLevel from './levels/SecondLevel';
-import HealthCounter from './HealthCounter';
+import ThirdLevel from './levels/ThirdLevel';
 
 function GameApp(){
   const onLevelPassed = () => {
@@ -20,10 +22,11 @@ function GameApp(){
   const dictLevel = {
     0: <PreLevel onLevelPassed={onLevelPassed} />,
     1: <FirstLevel onLevelPassed={onLevelPassed} />,
-    2: <SecondLevel onLevelPassed={onLevelPassed} />
+    2: <SecondLevel onLevelPassed={onLevelPassed} />,
+    3: <ThirdLevel onLevelPassed={onLevelPassed} />,
   }
 
-  const [level, setLevel] = useState(2);
+  const [level, setLevel] = useState(3);
 
   return (
       <div className="container border border-secondary p-3 mt-5">
