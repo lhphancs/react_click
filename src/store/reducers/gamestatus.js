@@ -4,6 +4,10 @@ const initialGameStatusState = {
 
 export default function gameStatus(state = initialGameStatusState, event){
     switch(event.type){
+        case 'SET_GAME_STATUS_ACTIVE':
+            return Object.assign({}, state, {
+                status: 'active'
+            })
         case 'SET_GAME_STATUS_LOSS':
             return Object.assign({}, state, {
                 status: 'loss'
