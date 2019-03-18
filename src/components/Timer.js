@@ -13,12 +13,7 @@ function Timer(props){
             return () => clearTimeout(timerId);
         }
         else{
-            store.dispatch(
-                {
-                    type: "SET_LEVEL", 
-                    level: -1
-                }
-            )
+            store.dispatch( {type: "SET_GAME_STATUS_LOSS"} );
         }
     })
 
