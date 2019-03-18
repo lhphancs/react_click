@@ -13,8 +13,10 @@ import HealthCounter from './HealthCounter';
 import './GameApp.css';
 
 const mapStateToProps = (state) =>{
+  console.log(state)
     return {
-      level: state.level
+      level: state.level,
+      gamestatus: state.gamestatus
     };
 };
 
@@ -44,15 +46,13 @@ function GameApp(props){
       <div className="container border border-secondary p-3 mt-5">
         <h1 className="text-center">{ titles[props.level.num] }</h1>
         <div>
-        </div>
-        <div>
           {
-            props.level.num === -1 ? <ScreenLose />
-            : props.level.num < Object.keys(dictLevel).length ?
+            props.gamestatus.status === 'active' ? 
               <div>
                 { dictLevel[props.level.num] }
                 <Timer secondsLeft={TIMER_AMT} />
               </div>
+            : props.gamestatus.status === 'loss' ? <ScreenLose />
             : <div>You win?</div>
           }
         </div>

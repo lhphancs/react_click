@@ -10,8 +10,7 @@ function HealthCounter(props){
     if(props.health.amt === 0){
         store.dispatch(
             {
-                type: "SET_LEVEL", 
-                level: -1
+                type: "SET_GAME_STATUS_LOSS", 
             }
         )
     }
