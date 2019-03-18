@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import ReactTooltip from 'react-tooltip'
-import store from '../../store/store'
 
 function FirstLevel(props){
     function onBoxClick(){
@@ -17,11 +16,11 @@ function FirstLevel(props){
         props.onLevelPassed();
         return null;
     }
+
     return(
         <div>
             <button className={boxStates[clickCounter].classSet} onClick={onBoxClick}
-            data-tip={boxStates[clickCounter].msg}>
-            
+                data-tip={boxStates[clickCounter].msg}>
             </button>
             <ReactTooltip />
         </div>

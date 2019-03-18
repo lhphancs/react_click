@@ -6,6 +6,7 @@ import PreLevel from './levels/PreLevel';
 import FirstLevel from './levels/FirstLevel';
 import SecondLevel from './levels/SecondLevel';
 import ThirdLevel from './levels/ThirdLevel';
+import Timer from './Timer';
 
 function GameApp(){
   const onLevelPassed = () => {
@@ -16,7 +17,8 @@ function GameApp(){
     "Level: 0",
     "Level: 1",
     "Level: 2",
-    "Congrats!"
+    "Level: 3",
+    "End"
   ]
 
   const dictLevel = {
@@ -34,6 +36,8 @@ function GameApp(){
         <div>
             { level < Object.keys(dictLevel).length ? dictLevel[level] : <div>You win?</div> }
         </div>
+
+        <Timer secondsLeft={200} />
         <HealthCounter />
       </div>
   );
