@@ -16,9 +16,9 @@ export default function Levels(){
 
   const dictLevel = {
     0: { component: <PreLevel onLevelPassed={onLevelPassed} />, title: "0", lvMsg: "abc" },
-    1: { component: <PreLevel onLevelPassed={onLevelPassed} />, title: "1", lvMsg: "abc" },
-    2: { component: <PreLevel onLevelPassed={onLevelPassed} />, title: "2", lvMsg: "abc" },
-    3: { component: <PreLevel onLevelPassed={onLevelPassed} />, title: "3", lvMsg: "abc" },
+    1: { component: <FirstLevel onLevelPassed={onLevelPassed} />, title: "1", lvMsg: "abc" },
+    2: { component: <SecondLevel onLevelPassed={onLevelPassed} />, title: "2", lvMsg: "abc" },
+    3: { component: <ThirdLevel onLevelPassed={onLevelPassed} />, title: "3", lvMsg: "abc" },
   }
 
   return(
@@ -27,5 +27,5 @@ export default function Levels(){
         { dictLevel[currentLevel].component }
     <div className="border p-2 m-2">{dictLevel[currentLevel].lvMsg}</div>
     </div>
-  )
+  );
 }
