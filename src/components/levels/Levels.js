@@ -1,24 +1,24 @@
 import React, {useState} from 'react';
 
-import PreLevel from './PreLevel';
 import FirstLevel from './FirstLevel';
 import SecondLevel from './SecondLevel';
 import ThirdLevel from './ThirdLevel';
+import FourthLevel from './FourthLevel';
 
 
 export default function Levels(){
 
-  const [currentLevel, setCurrentLevel] = useState(0);
+  const [currentLevel, setCurrentLevel] = useState(1);
 
   const onLevelPassed = () => {
       setCurrentLevel(currentLevel + 1);
   }
 
   const dictLevel = {
-    0: { component: <PreLevel onLevelPassed={onLevelPassed} />, title: "0", lvMsg: "abc" },
-    1: { component: <FirstLevel onLevelPassed={onLevelPassed} />, title: "1", lvMsg: "abc" },
-    2: { component: <SecondLevel onLevelPassed={onLevelPassed} />, title: "2", lvMsg: "abc" },
+    1: { component: <FirstLevel onLevelPassed={onLevelPassed} />, title: "1", lvMsg: "AAAA" },
+    2: { component: <SecondLevel onLevelPassed={onLevelPassed} />, title: "2", lvMsg: "Can't get me!" },
     3: { component: <ThirdLevel onLevelPassed={onLevelPassed} />, title: "3", lvMsg: "abc" },
+    4: { component: <FourthLevel onLevelPassed={onLevelPassed} />, title: "4", lvMsg: "abc" },
   }
 
   return(

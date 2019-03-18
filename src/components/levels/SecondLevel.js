@@ -1,47 +1,47 @@
 import React from 'react';
-import ReactTooltip from 'react-tooltip'
-import './SecondLevel.css';
-import store from '../../store/store'
+import getRndInteger from '../../utils';
 
-
-function SecondLevel(props){
-    const AMT_BOX_TO_DRAW = 3;
-    const amtInitialBoxesDrawn = getRndInteger(0, AMT_BOX_TO_DRAW-1);
-
-    const boxToDrawArray = [];
-
-    addFakeButtonsToArray(boxToDrawArray, "F-A", props.onHealthLoss, amtInitialBoxesDrawn);
-    boxToDrawArray.push(
-        <button className="btn btn-outline-primary btn-to-click m-2"
-        key="RealBtn" data-tip={"Acchoo"}
-        onClick={props.onLevelPassed}>
-        </button>
-    )
-    addFakeButtonsToArray(boxToDrawArray, "F-B", props.onHealthLoss, AMT_BOX_TO_DRAW - amtInitialBoxesDrawn - 1);
-
-    return (
-        <div>
-            { boxToDrawArray.map( (btn) => btn) }
-            <ReactTooltip />
-        </div>
-    );
-}
-
-function addFakeButtonsToArray(array, preKeyVal, onClickResponse, amtToAdd){
-    function FakeButton(){
-        return(
-            <button className="btn btn-outline-primary btn-to-click m-2"
-            onClick={ () => store.dispatch({type: "DECREMENT_HEALTH"}) }></button>
-        )
+class SecondLevel extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            leftMargin: 0
+        }
+        this.boxContainerRef = React.createRef();
+        this.maxWidthPosition = 0 - 200;
     }
 
-    for(var i=0; i<amtToAdd; ++i){
-        array.push(<FakeButton key={preKeyVal+i} onHealthLoss={onClickResponse} />);
+    setRandomLeftMargin(min, max){
+        this.setState({
+            leftMargin: getRndInteger(min, max)
+        });
+    }
+
+    componentDidMount(){
+        this.setRandomLeftMargin(0, 0);
+    }
+
+    componentDidUpdate(){
+        setTimeout( () =>{
+            // Needed in case it tries to set value after page dissapears
+            try{
+                this.setRandomLeftMargin(0, this.boxContainerRef.current.clientWidth - 200);
+            }
+            catch(err){
+                ;
+            }
+        }, 200);
+    }
+
+    render(){
+        return (
+            <div ref={this.boxContainerRef}>
+                <button className="btn btn-outline-primary btn-to-click m-2" onClick={this.props.onLevelPassed}
+                style={{ position: 'relative', left: this.state.leftMargin }}>
+                
+                </button>
+            </div>
+        );
     }
 }
-
-function getRndInteger(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) ) + min;
-}
-
 export default SecondLevel;

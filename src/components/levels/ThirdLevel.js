@@ -1,36 +1,43 @@
-import React, {useState} from 'react';
+import React from 'react';
+import ReactTooltip from 'react-tooltip'
+import './ThirdLevel.css';
 import store from '../../store/store'
+import getRndInteger from '../../utils';
 
 function ThirdLevel(props){
-    const REAL_PASSWORD = "NOT PASSWORD";
-    const [pass, setPass] = useState("");
-    const [currentLetterIndex, setCurrentLetterIndex] = useState(0);
+    const AMT_BOX_TO_DRAW = 3;
+    const amtInitialBoxesDrawn = getRndInteger(0, AMT_BOX_TO_DRAW-1);
 
-    const handleOnKeyPressed = (event) =>{
-        if( event.key === REAL_PASSWORD.charAt(currentLetterIndex) )
-        {
-            setCurrentLetterIndex(currentLetterIndex+1);
-            if(currentLetterIndex >= REAL_PASSWORD.length){
-                props.onLevelPassed();
-            }
-        }
-        else{
-            console.log("WRONG")
-        }
-    }
+    const boxToDrawArray = [];
+
+    addFakeButtonsToArray(boxToDrawArray, "F-A", props.onHealthLoss, amtInitialBoxesDrawn);
+    boxToDrawArray.push(
+        <button className="btn btn-outline-primary btn-to-click m-2"
+        key="RealBtn" data-tip={"Acchoo"}
+        onClick={props.onLevelPassed}>
+        </button>
+    )
+    addFakeButtonsToArray(boxToDrawArray, "F-B", props.onHealthLoss, AMT_BOX_TO_DRAW - amtInitialBoxesDrawn - 1);
 
     return (
-        <form>
-            <div className="form-group">
-                <label>User Name</label>
-                <input className="form-control" placeholder="L33tBoxOverlord123" disabled />
-            </div>
-            <div className="form-group">
-                <label>Password</label>
-                <input className="form-control" placeholder="Not Password" onKeyPress={handleOnKeyPressed} />
-            </div>
-        </form>
+        <div>
+            { boxToDrawArray.map( (btn) => btn) }
+            <ReactTooltip />
+        </div>
     );
+}
+
+function addFakeButtonsToArray(array, preKeyVal, onClickResponse, amtToAdd){
+    function FakeButton(){
+        return(
+            <button className="btn btn-outline-primary btn-to-click m-2"
+            onClick={ () => store.dispatch({type: "DECREMENT_HEALTH"}) }></button>
+        )
+    }
+
+    for(var i=0; i<amtToAdd; ++i){
+        array.push(<FakeButton key={preKeyVal+i} onHealthLoss={onClickResponse} />);
+    }
 }
 
 export default ThirdLevel;
