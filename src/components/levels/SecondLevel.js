@@ -1,44 +1,27 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import getRndInteger from '../../utils';
 
-class SecondLevel extends React.Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            leftMargin: 0
-        }
-        this.boxContainerRef = React.createRef();
-        this.maxWidthPosition = 0 - 200;
-        this.componentDidUpdate(); // Needed to initialize repeated movement
-    }
+function SecondLevel(props){
+    const [leftMargin, setLeftMargin] = useState(0);
+    const inputRef = useRef(null);
 
-    setRandomLeftMargin(min, max){
-        this.setState({
-            leftMargin: getRndInteger(min, max)
-        });
-    }
+    useEffect( () =>{
+        let width = inputRef.current.clientWidth;
+        let maxHorizontalPosition = width - 200;
 
-    componentDidUpdate(){
-        setTimeout( () =>{
-            // Needed in case it tries to set value after page dissapears
-            try{
-                this.setRandomLeftMargin(0, this.boxContainerRef.current.clientWidth - 200);
-            }
-            catch(err){
-                ;
-            }
-        }, 200);
-    }
+        const timerId = setTimeout( () =>{
+            setLeftMargin( getRndInteger(0, maxHorizontalPosition) );
+        }, 500);
+        return () => clearTimeout(timerId);
+    });
 
-    render(){
-        return (
-            <div ref={this.boxContainerRef}>
-                <button className="btn btn-outline-primary btn-to-click m-2" onClick={this.props.onLevelPassed}
-                style={{ position: 'relative', left: this.state.leftMargin }}>
-                
-                </button>
-            </div>
-        );
-    }
+    return (
+        <div ref={inputRef}>
+            <button className="btn btn-outline-primary btn-to-click m-2" onClick={props.onLevelPassed}
+            style={{ position: 'relative', left: leftMargin }}>
+            
+            </button>
+        </div>
+    )
 }
 export default SecondLevel;
