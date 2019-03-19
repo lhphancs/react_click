@@ -11,13 +11,13 @@ function FourthLevel(props){
     const [hintMsg, setHintMsg] = useState(HINT_MSGS[0]);
 
     useEffect( () =>{
-        if(userInput != REAL_PASSWORD.substring(0, userInput.length)){
+        if(userInput !== REAL_PASSWORD.substring(0, userInput.length)){
             setHintMsg(HINT_WRONG_MSG);
         }
         else if(userInput.length < REAL_PASSWORD.length/2){
             setHintMsg( HINT_MSGS[0] );
         }
-        else if(userInput.length != REAL_PASSWORD.length){
+        else if(userInput.length !== REAL_PASSWORD.length){
             setHintMsg( HINT_MSGS[1] );
         }
         else{

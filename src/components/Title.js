@@ -12,7 +12,7 @@ function Title(props){
       </h1>
 
       <div className="card">
-        <img src="..." className="card-img-top" />
+        <img src="..." className="card-img-top" alt=""/>
         <div className="card-body">
           <h5 className="card-title">Story:..</h5>
           <p className="card-text">{MSG_STORY}</p>
