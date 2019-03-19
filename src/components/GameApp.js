@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ScreenLose from './ScreenLose';
+import ScreenWin from './ScreenWin';
 import Levels from './levels/Levels'
 import Timer from './Timer';
 
@@ -20,7 +21,7 @@ function GameApp(props){
           {
             props.gamestatus.status === 'active' ? <ActiveGame secondsLeft={10000} />
             : props.gamestatus.status === 'loss' ? <ScreenLose />
-            : <div>You win?</div>
+            : <ScreenWin />
           }
         </div>
       </div>
