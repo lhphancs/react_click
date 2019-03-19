@@ -1,5 +1,7 @@
+import consts from '../../consts';
+
 const initialHealthState = {
-    amt: 1
+    amt: consts.INITIAL_HEALTH
 }
 
 export default function health(state = initialHealthState, event){
@@ -14,7 +16,7 @@ export default function health(state = initialHealthState, event){
             })
         case 'SET_HEALTH':
             return Object.assign({}, state, {
-                amt: event.amtHealth 
+                amt: event.amt
             })
         default:
             return state;

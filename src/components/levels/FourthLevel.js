@@ -1,36 +1,35 @@
 import React, {useState} from 'react';
 import store from '../../store/store'
 
-function ThirdLevel(props){
+function FourthLevel(props){
     const REAL_PASSWORD = "NOT PASSWORD";
-    const [pass, setPass] = useState("");
-    const [currentLetterIndex, setCurrentLetterIndex] = useState(0);
+    const [isCorrectPassSoFar, setIsCorrectPassSoFar] = useState(true);
 
     const handleOnKeyPressed = (event) =>{
-        if( event.key === REAL_PASSWORD.charAt(currentLetterIndex) )
-        {
-            setCurrentLetterIndex(currentLetterIndex+1);
-            if(currentLetterIndex >= REAL_PASSWORD.length){
-                props.onLevelPassed();
-            }
-        }
-        else{
-            console.log("WRONG")
-        }
+        let currentUserInput = event.target.value;
+        let isMatchingInputSoFar = currentUserInput === REAL_PASSWORD.substring(0, currentUserInput.length);
+        setIsCorrectPassSoFar(isMatchingInputSoFar);
+    }
+
+    function onUserSubmit(event){
+        console.log(event)
+        console.log(event.target)
+        props.onLevelPassed();
     }
 
     return (
-        <form>
+        <form onSubmit={onUserSubmit} className="border p-3">
             <div className="form-group">
                 <label>User Name</label>
-                <input className="form-control" placeholder="L33tBoxOverlord123" disabled />
+                <input className="form-control" placeholder="CoolBoxOverlord123" disabled />
             </div>
             <div className="form-group">
                 <label>Password</label>
-                <input className="form-control" placeholder="Not Password" onKeyPress={handleOnKeyPressed} />
+                <input className={'form-control '+  (isCorrectPassSoFar ? 'is-valid' : 'is-invalid')} placeholder={REAL_PASSWORD} onChange={handleOnKeyPressed} />
             </div>
+            <button type="submit" className="btn btn-primary">Submit</button>
         </form>
     );
 }
 
-export default ThirdLevel;
+export default FourthLevel;

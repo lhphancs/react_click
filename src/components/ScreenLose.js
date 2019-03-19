@@ -1,8 +1,12 @@
-import React from 'react'
-import store from '../store/store'
+import React from 'react';
+import store from '../store/store';
+import consts from '../consts';
 
 function ScreenLose(){
-    const onPlayAgain = () => store.dispatch({type: "SET_GAME_STATUS_ACTIVE"});
+    const onPlayAgain = () => {
+        store.dispatch( {type: "SET_HEALTH", amt: consts.INITIAL_HEALTH} );
+        store.dispatch( {type: "SET_GAME_STATUS_ACTIVE"});
+    }
 
     return (
         <div>

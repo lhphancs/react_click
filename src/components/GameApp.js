@@ -18,12 +18,11 @@ function GameApp(props){
       <div className="container border border-secondary p-3 mt-5">
         <div>
           {
-            props.gamestatus.status === 'active' ? <ActiveGame secondsLeft={50} />
+            props.gamestatus.status === 'active' ? <ActiveGame secondsLeft={10000} />
             : props.gamestatus.status === 'loss' ? <ScreenLose />
             : <div>You win?</div>
           }
         </div>
-        <HealthCounter />
       </div>
   );
 }
@@ -34,6 +33,7 @@ function ActiveGame(props){
   return (
     <div>
       <Levels />
+      <HealthCounter />
       <Timer secondsLeft={TIMER_AMT} />
     </div>
   )
