@@ -13,7 +13,6 @@ function FourthLevel(props){
 
     function onUserSubmit(event){
         console.log(event)
-        console.log(event.target)
         props.onLevelPassed();
     }
 
