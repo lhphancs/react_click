@@ -9,16 +9,13 @@ class SecondLevel extends React.Component{
         }
         this.boxContainerRef = React.createRef();
         this.maxWidthPosition = 0 - 200;
+        this.componentDidUpdate(); // Needed to initialize repeated movement
     }
 
     setRandomLeftMargin(min, max){
         this.setState({
             leftMargin: getRndInteger(min, max)
         });
-    }
-
-    componentDidMount(){
-        this.setRandomLeftMargin(0, 0);
     }
 
     componentDidUpdate(){

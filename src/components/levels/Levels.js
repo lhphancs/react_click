@@ -8,7 +8,7 @@ import FourthLevel from './FourthLevel';
 
 export default function Levels(){
 
-  const [currentLevel, setCurrentLevel] = useState(4);
+  const [currentLevel, setCurrentLevel] = useState(2);
 
   const onLevelPassed = () => {
       setCurrentLevel(currentLevel + 1);
