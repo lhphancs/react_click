@@ -4,11 +4,12 @@ import FirstLevel from './FirstLevel';
 import SecondLevel from './SecondLevel';
 import ThirdLevel from './ThirdLevel';
 import FourthLevel from './FourthLevel';
+import LastLevel from './LastLevel';
 
 
 export default function Levels(){
 
-  const [currentLevel, setCurrentLevel] = useState(2);
+  const [currentLevel, setCurrentLevel] = useState(4);
 
   const onLevelPassed = () => {
       setCurrentLevel(currentLevel + 1);
@@ -19,6 +20,7 @@ export default function Levels(){
     2: { component: <SecondLevel onLevelPassed={onLevelPassed} /> , title: "2", lvMsg: "Can't catch me!" },
     3: { component: <ThirdLevel onLevelPassed={onLevelPassed} /> ,  title: "3", lvMsg: "Can't find me!" },
     4: { component: <FourthLevel onLevelPassed={onLevelPassed} />,  title: "4", lvMsg: "Can't crack this!" },
+    5: { component: <LastLevel onLevelPassed={onLevelPassed} />,  title: "Last Level", lvMsg: "Can't beat this!" },
   }
 
   return(
