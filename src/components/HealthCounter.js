@@ -8,11 +8,7 @@ const mapStateToProps = (state) =>{
 
 function HealthCounter(props){
     if(props.health.amt === 0){
-        store.dispatch(
-            {
-                type: "SET_GAME_STATUS_LOSS", 
-            }
-        )
+        store.dispatch( {type: "SET_GAME_STATUS_LOSS"} );
     }
 
     return(

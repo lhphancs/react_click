@@ -1,4 +1,4 @@
-import consts from '../../consts';
+import consts from '../../const/state';
 
 const initialHealthState = {
     amt: consts.INITIAL_HEALTH
