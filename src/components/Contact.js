@@ -2,8 +2,9 @@ import React from 'react';
 
 const Contact = function(){
     return(
-        <div>
-            Contact us page
+        <div class="jumbotron">
+            <h1 class="display-4">Contact</h1>
+            <p class="lead">N/A</p>
         </div>
     )
 }
