@@ -9,7 +9,7 @@ import LastLevel from './LastLevel';
 
 export default function Levels(){
 
-  const [currentLevel, setCurrentLevel] = useState(1);
+  const [currentLevel, setCurrentLevel] = useState(5);
 
   const onLevelPassed = () => {
       setCurrentLevel(currentLevel + 1);

@@ -11,13 +11,13 @@ function SecondLevel(props){
 
         const timerId = setTimeout( () =>{
             setLeftMargin( getRndInteger(0, maxHorizontalPosition) );
-        }, 200);
+        }, 500);
         return () => clearTimeout(timerId);
     });
 
     return (
-        <div ref={inputRef}>
-            <button className="btn btn-outline-primary btn-to-click m-2" onClick={props.onLevelPassed}
+        <div ref={inputRef} className="mt-3 p-3 bg-warning">
+            <button className="btn btn-outline-primary btn-to-click my-2" onClick={props.onLevelPassed}
             style={{ position: 'relative', left: leftMargin }}>
             
             </button>
