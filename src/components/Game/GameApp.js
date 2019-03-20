@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import ScreenLose from './ScreenLose';
-import ScreenWin from './ScreenLose';
+import ScreenWin from './ScreenWin';
 import Title from './Title';
 import ActiveGame from './ActiveGame';
 
