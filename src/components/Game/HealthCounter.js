@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import store from '../../store/store'
 import './HealthCounter.css';
 
-const HIGH_HEALTH = 7;
-const MEDIUM_HEALTH = 4;
+const HIGH_HEALTH = 20;
+const MEDIUM_HEALTH = 15;
 
 const mapStateToProps = (state) =>{
     return { health: state.health };

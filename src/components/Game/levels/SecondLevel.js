@@ -11,7 +11,7 @@ function SecondLevel(props){
 
         const timerId = setTimeout( () =>{
             setLeftMargin( getRndInteger(0, maxHorizontalPosition) );
-        }, 500);
+        }, 200);
         return () => clearTimeout(timerId);
     });
 

@@ -1,3 +1,3 @@
 export default {
-    INITIAL_HEALTH: 10
+    INITIAL_HEALTH: 25
 };

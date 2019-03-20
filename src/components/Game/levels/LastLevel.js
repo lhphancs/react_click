@@ -29,10 +29,11 @@ function LastLevel(props){
             onWin();
         }
         else{
+            const delay = 50*Math.sqrt(boxLife);
             const timerId = setTimeout( () =>{
                 setRealLeftMargin( getRndInteger(0, maxHorizontalPosition) );
                 setFakeLeftMargin( getRndInteger(0, maxHorizontalPosition) );
-            }, 1000);
+            }, delay) ;
             return () => clearTimeout(timerId);
         }
     });

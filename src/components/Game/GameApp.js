@@ -21,7 +21,7 @@ function GameApp(props){
       {
         !isGameMode ? <Title setIsGameMode={ setIsGameMode }/>
         :
-          props.gamestatus.status === 'active' ? <ActiveGame setIsGameMode={setIsGameMode} secondsLeft={10000} />
+          props.gamestatus.status === 'active' ? <ActiveGame setIsGameMode={setIsGameMode} secondsLeft={180} />
           : props.gamestatus.status === 'loss' ? <ScreenLose setIsGameMode={setIsGameMode} />
           : <ScreenWin setIsGameMode={setIsGameMode} />
       }
