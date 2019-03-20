@@ -8,9 +8,6 @@ function ActiveGame(props){
 
   return (
     <div>
-      <div>
-        <button className="btn btn-outline-danger" onClick={ () => props.setIsGameMode(false) }>Exit Game</button>
-      </div>
       <Levels />
       <HealthCounter />
       <Timer secondsLeft={TIMER_AMT} />
