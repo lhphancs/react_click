@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactTooltip from 'react-tooltip'
 import './ThirdLevel.css';
-import store from '../../store/store'
-import getRndInteger from '../../utils';
+import store from '../../../store/store';
+import getRndInteger from '../../../utils';
 
 function ThirdLevel(props){
     const AMT_BOX_TO_DRAW = 3;

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import store from '../store/store'
+import store from '../../store/store'
 
 function Timer(props){
     const [secondsLeft, setSecondsLeft] = useState(props.secondsLeft);

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import store from '../store/store'
+import store from '../../store/store'
 
 const mapStateToProps = (state) =>{
     return { health: state.health };

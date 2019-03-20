@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import store from '../../store/store'
+import store from '../../../store/store'
 
 const USERNAME = "CoolBoxOverlord123";
 const REAL_PASSWORD = "password";

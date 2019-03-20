@@ -1,6 +1,6 @@
 import React from 'react';
-import store from '../store/store'
-import consts from '../const/state';
+import store from '../../store/store'
+import consts from '../../const/state';
 
 const MSG_STORY = "Something something box overlord...You are the last circle, etc... Go stop the box overlord from destroying the world... Yea, let's go with that."
 

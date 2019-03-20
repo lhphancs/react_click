@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import getRndInteger from '../../utils';
+import getRndInteger from '../../../utils';
 
 function SecondLevel(props){
     const [leftMargin, setLeftMargin] = useState(0);
