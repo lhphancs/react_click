@@ -1,5 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import store from '../../store/store'
+import './Timer.css'
+
+const HIGH_TIME = 120;
+const MEDIUM_TIME = 60;
 
 function Timer(props){
     const [secondsLeft, setSecondsLeft] = useState(props.secondsLeft);
@@ -18,9 +22,12 @@ function Timer(props){
     })
 
     return(
-        <div>
+        <p id="timer" className={ secondsLeft >= HIGH_TIME ? "text-dark"
+            : secondsLeft >= MEDIUM_TIME ? "text-warning"
+            : "text-danger" 
+        }>
             Time Remaining: {secondsLeft}
-        </div>
+        </p>
     )
 }
 

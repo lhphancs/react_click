@@ -4,10 +4,10 @@ import './ThirdLevel.css';
 import store from '../../../store/store';
 import getRndInteger from '../../../utils';
 
-function ThirdLevel(props){
-    const AMT_BOX_TO_DRAW = 3;
-    const amtInitialBoxesDrawn = getRndInteger(0, AMT_BOX_TO_DRAW-1);
+const AMT_BOX_TO_DRAW = 20;
 
+function ThirdLevel(props){
+    const amtInitialBoxesDrawn = getRndInteger(0, AMT_BOX_TO_DRAW-1);
     const boxToDrawArray = [];
 
     addFakeButtonsToArray(boxToDrawArray, "F-A", props.onHealthLoss, amtInitialBoxesDrawn);
