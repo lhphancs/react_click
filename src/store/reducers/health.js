@@ -4,8 +4,8 @@ const initialHealthState = {
     amt: consts.INITIAL_HEALTH
 }
 
-export default function health(state = initialHealthState, event){
-    switch(event.type){
+export default function health(state = initialHealthState, action){
+    switch(action.type){
         case 'INCREMENT_HEALTH':
             return Object.assign({}, state, {
                 amt: state.amt + 1
@@ -16,7 +16,7 @@ export default function health(state = initialHealthState, event){
             })
         case 'SET_HEALTH':
             return Object.assign({}, state, {
-                amt: event.amt
+                amt: action.amt
             })
         default:
             return state;

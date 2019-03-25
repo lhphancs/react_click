@@ -2,8 +2,8 @@ const initialGameStatusState = {
     status: 'active'
 }
 
-export default function gameStatus(state = initialGameStatusState, event){
-    switch(event.type){
+export default function gameStatus(state = initialGameStatusState, action){
+    switch(action.type){
         case 'SET_GAME_STATUS_ACTIVE':
             return Object.assign({}, state, {
                 status: 'active'
